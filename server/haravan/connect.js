@@ -18,8 +18,8 @@ const config = {
   scope_login: "openid profile email org userinfo",
   scope:
     "openid profile email org userinfo web.read_themes web.write_themes web.read_script_tags web.write_script_tags grant_service",
-  login_callback_url: "http://localhost:5000/install/login",
-  install_callback_url: "http://localhost:5000/install/grandservice",
+  login_callback_url: "https://f1z-popup-7i4bk.ondigitalocean.app/install/login",
+  install_callback_url: "https://f1z-popup-7i4bk.ondigitalocean.app/install/grandservice",
   orgid: null,
 };
 
@@ -30,7 +30,7 @@ router.get("/install/login", async (req, res) => {
   const shopInstalled = await authModel.findOne({ orgid });
   const url = `https://accounts.haravan.com/connect/authorize?response_mode=${config.response_mode}&response_type=${config.response_type}&scope=${config.scope_login}&client_id=${config.app_id}&redirect_uri=${config.login_callback_url}&nonce=${config.nonce}`;
   if (shopInstalled) {
-    res.redirect("http://localhost:3000?orgid=" + orgid);
+    res.redirect("https://f1z-popup-7i4bk.ondigitalocean.app?orgid=" + orgid);
   } else {
     res.redirect(url);
   }
@@ -71,7 +71,7 @@ router.post("/install/grandservice", async (req, res) => {
   };
   if (authorizeInfo) {
     await authModel.create(authorizeInfo);
-    res.redirect("http://localhost:3000?orgid=" + user.orgid);
+    res.redirect("https://f1z-popup-7i4bk.ondigitalocean.app?orgid=" + user.orgid);
   }
 });
 
