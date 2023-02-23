@@ -13,6 +13,12 @@ const authSchema = mongoose.Schema({
     type: String,
     require: [true, "Missing orgid"]
   },
+  data:{
+    isActive:{
+      type: Boolean,
+      
+    }
+  }
 })
 
 module.exports = mongoose.model('authModel', authSchema);

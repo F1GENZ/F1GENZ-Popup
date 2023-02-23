@@ -71,6 +71,7 @@ router.post("/install/grandservice", async (req, res) => {
   };
   if (authorizeInfo) {
     await authModel.create(authorizeInfo);
+    await 
     res.redirect("https://f1z-popup-7i4bk.ondigitalocean.app?orgid=" + user.orgid);
   }
 });
